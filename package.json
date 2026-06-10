@@ -20,7 +20,7 @@
     "tauri:android-build": "tauri android build"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2.0.0",
+    "@tauri-apps/api": "~2.0.0",
     "clsx": "^2.1.1",
     "jspdf": "^4.2.1",
     "konva": "^9.3.20",
@@ -31,7 +31,7 @@
     "react-konva": "^19.0.3"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.0.0",
+    "@tauri-apps/cli": "~2.0.0",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
