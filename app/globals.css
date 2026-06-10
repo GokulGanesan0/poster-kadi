@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #121212;
+  --ink: #121212;
+  --panel: #1b1a18;
+  --panel-soft: #23211f;
+  --line: #34302c;
+  --paper: #f5f1e8;
+  --ember: #e35d32;
+  --mint: #39d6a5;
+  --brass: #d7b86d;
+  --body-bg: linear-gradient(180deg, rgba(35, 33, 31, 0.96), rgba(18, 18, 18, 1) 36%), #121212;
+  --body-text: #f8f4eb;
+}
+
+.light-mode {
+  color-scheme: light;
+  background: #f7f5f0;
+  --ink: #f7f5f0;
+  --panel: #ffffff;
+  --panel-soft: #eae5d8;
+  --line: #d2c8b0;
+  --paper: #121212;
+  --ember: #d34e24;
+  --mint: #10855f;
+  --brass: #ab8e42;
+  --body-bg: linear-gradient(180deg, #fcfbfa 0%, #f4f0e6 100%), #f7f5f0;
+  --body-text: #1b1a18;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--body-bg);
+  color: var(--body-text);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #39d6a5;
+  outline-offset: 2px;
+}
+
+.range-control {
+  accent-color: #e35d32;
+}
+
+.scrollbar-thin {
+  scrollbar-color: #4a443e transparent;
+  scrollbar-width: thin;
+}
+
+.print-grid {
+  background-image:
+    linear-gradient(rgba(245, 241, 232, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 241, 232, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
