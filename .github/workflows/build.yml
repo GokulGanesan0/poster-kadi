@@ -33,14 +33,21 @@ jobs:
       - name: Build Next.js Static Site
         run: npm run build
 
+      - name: Install Rust targets (for universal macOS build)
+        if: matrix.platform == 'macos-latest'
+        run: |
+          rustup target add x86_64-apple-darwin
+          rustup target add aarch64-apple-darwin
+
       - name: Build Desktop (Tauri)
-        uses: tauri-apps/tauri-action@v0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          includeRelease: false
-          # Build a universal binary on macOS (supporting both Intel & Apple Silicon Macs)
-          args: ${{ matrix.platform == 'macos-latest' && '--target universal-apple-darwin' || '' }}
+        run: |
+          npm install -g @tauri-apps/cli
+          if [ "${{ matrix.platform }}" = "macos-latest" ]; then
+            npm run tauri:build -- --target universal-apple-darwin
+          else
+            npm run tauri:build
+          fi
+        shell: bash
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
