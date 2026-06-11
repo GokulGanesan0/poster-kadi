@@ -15,9 +15,9 @@
     "package:mac": "next build && electron-builder --mac dmg",
     "tauri:setup": "node scripts/setup_tauri.js",
     "tauri:dev": "tauri dev",
-    "tauri:build": "tauri build",
+    "tauri:build": "next build && tauri build",
     "tauri:android": "tauri android dev",
-    "tauri:android-build": "tauri android build"
+    "tauri:android-build": "next build && tauri android build --apk"
   },
   "dependencies": {
     "@tauri-apps/api": "~2.0.0",
