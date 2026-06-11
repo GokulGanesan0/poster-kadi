@@ -17,7 +17,8 @@
     "tauri:dev": "tauri dev",
     "tauri:build": "next build && tauri build",
     "tauri:android": "tauri android dev",
-    "tauri:android-build": "next build && tauri android build --apk"
+    "tauri:android-build": "next build && tauri android build --apk",
+    "tauri": "tauri"
   },
   "dependencies": {
     "@tauri-apps/api": "~2.0.0",
