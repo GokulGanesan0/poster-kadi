@@ -1,4 +1,4 @@
-const { app, BrowserWindow, protocol, net } = require("electron");
+const { app, BrowserWindow, protocol, net, dialog } = require("electron");
 const path = require("path");
 const { spawn } = require("child_process");
 const fs = require("fs");
@@ -46,6 +46,17 @@ function startBackend() {
   backendProcess = spawn(spawnCmd, spawnArgs, {
     cwd: path.join(__dirname, ".."),
     env: { ...process.env, PYTHONUNBUFFERED: "1" }
+  });
+
+  backendProcess.on("error", (err) => {
+    console.error("Failed to start backend process:", err);
+    dialog.showMessageBox({
+      type: "info",
+      title: "CMYK Backend Offline",
+      message: "The professional CMYK-ready PDF backend is currently offline.",
+      detail: "The application is still fully functional! Fills, crops, rotations, manual layouts, and standard PDF/PNG exports will run normally using the high-quality client-side engine.\n\nOnly the 'CMYK-ready' export checkbox requires Python to be installed.",
+      buttons: ["OK"]
+    });
   });
 
   backendProcess.stdout.on("data", (data) => {
